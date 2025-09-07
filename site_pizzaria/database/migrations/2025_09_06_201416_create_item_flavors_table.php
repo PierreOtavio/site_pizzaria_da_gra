@@ -14,8 +14,14 @@ class CreateItemFlavorsTable extends Migration
     public function up()
     {
         Schema::create('item_flavors', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('item_id');
+            $table->unsignedInteger('flavor_id');
+            $table->decimal('proportion', 3, 2)->nullable();
+
+            $table->primary(['item_id', 'flavor_id']);
+
+            $table->foreign('item_id')->references('item_id')->on('sale_items')->onDelete('cascade');
+            $table->foreign('flavor_id')->references('flavor_id')->on('pizza_flavors')->onDelete('cascade');
         });
     }
 

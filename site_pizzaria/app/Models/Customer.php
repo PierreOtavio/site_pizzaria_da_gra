@@ -7,5 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    
     use HasFactory;
+    
+    protected $table = 'customers';
+    protected $fillable = 
+    [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function sales() 
+    {
+        return $this->hasMany(Sale::class, 'customer_id');
+    }
+
 }
