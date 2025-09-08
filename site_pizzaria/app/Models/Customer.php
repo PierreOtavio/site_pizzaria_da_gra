@@ -4,30 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
-    
-    use HasFactory;
-    
+    use Notifiable;
+
     protected $table = 'customers';
-    protected $fillable = 
-    [
-        'name',
-        'email',
-        'phone',
-        'address',
-        'password'
+    protected $primaryKey = 'customer_id'; // pois sua tabela usa esse campo
+
+    protected $fillable = [
+        'name', 'email', 'password', 'phone', 'address'
     ];
 
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     public function sales() 
     {
         return $this->hasMany(Sale::class, 'customer_id');
     }
-
 }

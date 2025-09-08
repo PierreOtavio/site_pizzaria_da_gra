@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\ItemFlavor;
+use App\Services\ItemFlavorService;
 use Illuminate\Http\Request;
 
 class ItemFlavorController extends Controller
 {
+    protected $itemFlavorService;
+
+    public function __construct(ItemFlavorService $itemFlavorService) {
+        $this->itemFlavorService = $itemFlavorService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class ItemFlavorController extends Controller
      */
     public function index()
     {
-        //
+        $items = $this->itemFlavorService->all();
+        return view('items.index', );
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sale_Items;
+use App\Models\Sale_Item;
 use Illuminate\Http\Request;
 
-class SaleItemsController extends Controller
+class SaleItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class SaleItemsController extends Controller
      * @param  \App\Models\Sale_Items  $sale_Items
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale_Items $sale_Items)
+    public function show(Sale_Item $sale_Items)
     {
         //
     }
@@ -55,7 +55,7 @@ class SaleItemsController extends Controller
      * @param  \App\Models\Sale_Items  $sale_Items
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale_Items $sale_Items)
+    public function edit(Sale_Item $sale_Items)
     {
         //
     }
@@ -67,7 +67,7 @@ class SaleItemsController extends Controller
      * @param  \App\Models\Sale_Items  $sale_Items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale_Items $sale_Items)
+    public function update(Request $request, Sale_Item $sale_Items)
     {
         //
     }
@@ -78,7 +78,7 @@ class SaleItemsController extends Controller
      * @param  \App\Models\Sale_Items  $sale_Items
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale_Items $sale_Items)
+    public function destroy(Sale_Item $sale_Items)
     {
         //
     }

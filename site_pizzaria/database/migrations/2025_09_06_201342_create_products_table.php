@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('product_id');
             $table->string('name', 100);
-            $table->enum('type', ['pizza', 'bebida', 'sobremesa', 'outro']); // ajuste para seus tipos
+            $table->enum('type', ['pizza', 'drink']); // ajuste para seus tipos
             $table->string('description', 200)->nullable();
             $table->decimal('price', 10, 2);
             $table->timestamps();
