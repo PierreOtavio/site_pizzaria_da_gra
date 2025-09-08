@@ -25,13 +25,40 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(CustomerServiceInterface::class, CustomerService::class);
-        $this->app->bind(ProductServiceInterface::class, ProductService::class);
-        $this->app->bind(SaleServiceInterface::class, SaleService::class);
-        $this->app->bind(SaleItemServiceInterface::class, SaleItemService::class);
-        $this->app->bind(ItemFlavorServiceInterface::class, ItemFlavorService::class);
-        $this->app->bind(PizzaFlavorServiceInterface::class, PizzaFlavorService::class);
+        $this->app->bind(
+            \App\Services\AuthServiceInterface::class,
+            \App\Services\AuthService::class
+        );
+        $this->app->bind(
+            \App\Services\CustomerServiceInterface::class,
+            \App\Services\CustomerService::class
+        );
+        $this->app->bind(
+            \App\Services\ItemFlavorServiceInterface::class,
+            \App\Services\ItemFlavorService::class
+        );
+        $this->app->bind(
+            \App\Services\PizzaFlavorServiceInterface::class,
+            \App\Services\PizzaFlavorService::class
+        );
+        $this->app->bind(
+            \App\Services\ProductCatalogServiceInterface::class,
+            \App\Services\ProductCatalogService::class
+        );
+        $this->app->bind(
+            \App\Services\ProductServiceInterface::class,
+            \App\Services\ProductService::class
+        );
+        $this->app->bind(
+            \App\Services\SaleItemServiceInterface::class,
+            \App\Services\SaleItemService::class
+        );
+        $this->app->bind(
+            \App\Services\SaleServiceInterface::class,
+            \App\Services\SaleService::class
+        );
     }
+
 
     /**
      * Bootstrap any application services.

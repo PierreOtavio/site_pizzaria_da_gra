@@ -3,13 +3,13 @@
 namespace App\Services;
 
 use App\Services\SaleItemServiceInterface;
-use App\Models\Sale_Items;
+use App\Models\Sale_Item;
 
-class SaleItemService implements SaleServiceInterface 
+class SaleItemService implements SaleItemServiceInterface 
 {
     public function create(array $data)
     {
-        return Sale_Items::create([
+        return Sale_Item::create([
             'sale_id'     => $data['sale_id'],
             'product_id'  => $data['product_id'],
             'quantity'    => $data['quantity'],
@@ -21,17 +21,17 @@ class SaleItemService implements SaleServiceInterface
 
     public function all()
     {
-        return Sale_Items::all();
+        return Sale_Item::all();
     }
 
     public function find($saleId)
     {
-        return Sale_Items::findOrFail($saleId);
+        return Sale_Item::findOrFail($saleId);
     }
 
     public function update($saleId, array $data)
     {
-        $saleItem = Sale_Items::findOrFail($saleId);
+        $saleItem = Sale_Item::findOrFail($saleId);
         $saleItem->update($data);
 
         return $saleItem;
@@ -39,7 +39,7 @@ class SaleItemService implements SaleServiceInterface
     
     public function delete($saleId)
     {
-        $saleItemToDel = Sale_Items::findOrFail($saleId);
+        $saleItemToDel = Sale_Item::findOrFail($saleId);
         $saleItemToDel->delete();
     }
 }

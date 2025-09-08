@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Providers\ProductCatalogProvider;
 use Illuminate\Http\Request;
 use App\Services\SaleServiceInterface;
 use App\Services\SaleItemServiceInterface;
 use App\Services\ItemFlavorServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\PizzaFlavorServiceInterface;
+use App\Services\ProductCatalogService;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -18,7 +18,7 @@ class OrderController extends Controller
     protected $itemFlavorService;
     protected $productService;
     protected $pizzaFlavorService;
-    protected $product_catalog_provider;
+    protected $productCatalogService;
 
     public function __construct(
         SaleServiceInterface $saleService,
@@ -26,20 +26,20 @@ class OrderController extends Controller
         ItemFlavorServiceInterface $itemFlavorService,
         ProductServiceInterface $productService,
         PizzaFlavorServiceInterface $pizzaFlavorService,
-        ProductCatalogProvider $product_catalog_provider
+        ProductCatalogService $product_catalog_service
     ) {
         $this->saleService = $saleService;
         $this->saleItemService = $saleItemService;
         $this->itemFlavorService = $itemFlavorService;
         $this->productService = $productService;
         $this->pizzaFlavorService = $pizzaFlavorService;
-        $this->product_catalog_provider = $product_catalog_provider;
+        $this->productCatalogService = $product_catalog_service;
     }
 
     // 1. Mostra o catálogo de pizzas e bebidas
     public function catalog()
     {
-        $this->product_catalog_provider->boot();
+        $this->productCatalogService->ensureProductCatalog();
         $products = $this->productService->all(); // Inclui pizzas, refrigerantes, etc
         $pizzaFlavors = $this->pizzaFlavorService->all();
 

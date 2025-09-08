@@ -10,21 +10,21 @@ class AuthController extends Controller
 {
     protected $authService;
 
+    public function __construct(AuthService $authService) {
+        $this->authService = $authService;
+    }
+
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|email|unique:customers,email',
-            'address' => 'required|string|max:255',
-            'phone' => 'required|string|max:45',
             'password' => 'required|confirmed|min:6',
         ]);
 
         $this->authService->register([
             'name' => $request->name,
             'email'=> $request->email,
-            'address' => $request->address,
-            'phone' => $request->phone,
             'password' => $request->password
         ]);
 
@@ -49,5 +49,4 @@ class AuthController extends Controller
         $this->authService->logout();
         return redirect()->route('login');
     }
-
 }
