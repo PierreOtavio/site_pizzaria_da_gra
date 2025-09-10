@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password',
     ];
 
     /**
@@ -37,6 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function adminlte_desc()
+    {
+        // Aqui você decide o que mostrar. Exemplos:
+        return $this->customer->email ?? $this->email; // Mostra o email do profile (customer)
+        // Ou:
+        // return $this->customer->phone ?? 'Sem telefone';
+    }
+
+    public function adminlte_profile_url()
+    {
+        // Para acessar /admin/profile (rotas agrupadas)
+        return route('profile.show');
+    }
+
 
     public function customer()
     {

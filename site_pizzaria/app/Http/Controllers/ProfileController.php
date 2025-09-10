@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view();
+        //
     }
 
     /**
@@ -42,44 +41,63 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show()
     {
-        //
+        $user = Auth::user();
+        $customer = $user->customer;
+
+        return view('profile.show', compact('user', 'customer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        $customer = $user->customer;
+
+        return view('profile.edit', compact('user', 'customer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+        $customer = $user->customer;
+
+        // Validação
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|max:100',
+            'phone' => 'nullable|string|max:45',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        $customer->update($validated);
+
+        return redirect()->route('profile.show')->with('success', 'Perfil atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
         //
     }

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Pizzaria da Grá',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,9 +63,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Pizzaria</b> da Grá',
+    'logo_img' => 'images\pizza_da_gra.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3 logo custom',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -137,8 +137,8 @@ return [
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
-    'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_desc' => true,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -299,100 +299,74 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
         [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
+            'header' => 'PAINEL PRINCIPAL'
         ],
         [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
+            'text' => 'Início',
+            'url'  => 'home',
+            'icon' => 'fas fa-home',
         ],
 
-        // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'header' => 'GESTÃO DO NEGÓCIO'
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Clientes',
+            'url'  => 'admin.customers.index',
+            'icon' => 'fas fa-users',
+            'can'  => 'manage-customers',
         ],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Sabores',
+            'url'  => 'admin.pizza-flavors.index',
+            'icon' => 'fas fa-pizza-slice',
+            'can'  => 'manage-products',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Produtos',
+            'url'  => 'admin.products.index',
+            'icon' => 'fas fa-box-open',
+            'can'  => 'manage-products',
         ],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Vendas',
+            'url'  => 'admin.sales.index',
+            'icon' => 'fas fa-receipt',
+            'can'  => 'view-sales',
+        ],
+        [
+            'text' => 'Itens Vendidos',
+            'url' => 'admin.saleItems.index',
+            'icon' => 'fas fa-suitcase',
+            'can' => 'view-items-on-sale'
+        ],
+
+        ['header' => 'CONTA'],
+        [
+            'text' => 'Perfis',
+            'icon' => 'fas fa-bookmark',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Meu Perfil',
+                    'url' => 'profile',
+                    'icon' => 'fas fa-user-circle',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Editar Perfil',
+                    'url'  => 'profile/edit',
+                    'icon' => 'fas fa-user-edit',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Alterar Senha',
+                    'url'  => 'password/reset',
+                    'icon' => 'fas fa-key',
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
