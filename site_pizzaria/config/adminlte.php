@@ -306,38 +306,39 @@ return [
             'text' => 'Início',
             'url'  => 'home',
             'icon' => 'fas fa-home',
-        ],
+        ],  
 
         [
-            'header' => 'GESTÃO DO NEGÓCIO'
+            'header' => 'GESTÃO DO NEGÓCIO',
+            'can' => 'manage-customers',
         ],
         [
             'text' => 'Clientes',
-            'url'  => 'admin.customers.index',
+            'route'  => 'admin.customers.index',
             'icon' => 'fas fa-users',
             'can'  => 'manage-customers',
         ],
         [
             'text' => 'Sabores',
-            'url'  => 'admin.pizza-flavors.index',
+            'route'  => 'admin.pizza-flavors.index',
             'icon' => 'fas fa-pizza-slice',
             'can'  => 'manage-products',
         ],
         [
             'text' => 'Produtos',
-            'url'  => 'admin.products.index',
+            'route'  => 'admin.products.index',
             'icon' => 'fas fa-box-open',
             'can'  => 'manage-products',
         ],
         [
             'text' => 'Vendas',
-            'url'  => 'admin.sales.index',
+            'route'  => 'admin.sales.index',
             'icon' => 'fas fa-receipt',
             'can'  => 'view-sales',
         ],
         [
             'text' => 'Itens Vendidos',
-            'url' => 'admin.saleItems.index',
+            'route' => 'admin.saleItems.index',
             'icon' => 'fas fa-suitcase',
             'can' => 'view-items-on-sale'
         ],

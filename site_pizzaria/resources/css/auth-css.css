@@ -1,0 +1,70 @@
+body {
+    background: #f9fbf7 !important;
+    color: #2f3234 !important;
+    font-family: "Poppins", Arial, sans-serif;
+}
+.auth-header {
+    background: #2f3234 !important;
+    color: #cfb54f !important;
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    font-size: 1.35rem;
+    font-weight: normal;
+    letter-spacing: 0.07em;
+    box-shadow: 0 2px 12px #23262714;
+    margin-bottom: 36px;
+}
+.auth-form,
+.login-box,
+.register-box {
+    background: #fff !important;
+    border-radius: 16px !important;
+    padding: 28px 38px 22px 38px !important;
+    box-shadow: 0 6px 24px #2f323420 !important;
+    margin: 36px auto 0 auto;
+    max-width: 480px;
+}
+.auth-form label,
+.auth-form .form-label {
+    color: #2f3234 !important;
+    font-weight: 500 !important;
+}
+.auth-form .form-control {
+    border-radius: 8px !important;
+    border: 1.5px solid #cfb54f !important;
+    background: #fafafa !important;
+    color: #2f3234 !important;
+    font-size: 1.08em !important;
+}
+.auth-form .form-control:focus {
+    border-color: #34912a !important;
+    box-shadow: 0 0 0 2px #cfb54f33 !important;
+}
+.auth-form .btn,
+.auth-form .btn-primary {
+    background: #cfb54f !important;
+    color: #2f3234 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+.auth-form .btn:hover,
+.auth-form .btn-primary:hover {
+    background: #34912a !important;
+    color: #fff !important;
+}
+.auth-switch {
+    margin-top: 18px;
+    text-align: center;
+    color: #2f3234;
+    font-size: 1.08em;
+}
+.auth-switch a {
+    color: #34912a !important;
+    font-weight: 600;
+}
+.auth-switch a:hover {
+    color: #cfb54f !important;
+    text-decoration: underline !important;
+}

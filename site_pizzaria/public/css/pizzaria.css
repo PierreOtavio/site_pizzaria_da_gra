@@ -1,0 +1,180 @@
+:root {
+    --bg-main: #f9fbf7;
+    --bg-card: #ffffff;
+    --primary: #2f3234;
+    --primary-dark: #232627;
+    --secondary: #cfb54f;
+    --accent: #34912a;
+    --success: #34912a;
+    --danger: #cf4f4f;
+    --text-main: #2f3234;
+    --text-light: #f9fbf7;
+    --adminlte-sidebar-bg: #2f3234;
+}
+
+/* Força troca das cores reais dos elementos principais! */
+body,
+.wrapper,
+.content-wrapper,
+.main-footer {
+    background-color: #f9fbf7 !important;
+    color: #2f3234 !important;
+}
+.main-header,
+.navbar,
+.sidebar,
+.main-sidebar,
+.main-sidebar::before {
+    background-color: #2f3234 !important;
+    color: #f9fbf7 !important;
+}
+.brand-link {
+    background: #232627 !important;
+    color: #cfb54f !important;
+    font-weight: bold !important;
+    font-size: 1.23rem !important;
+    letter-spacing: 0.5px !important;
+}
+.nav-sidebar .nav-link {
+    color: #f9fbf7 !important;
+}
+.nav-sidebar .nav-link.active,
+.nav-sidebar .nav-link.active:focus,
+.nav-sidebar .nav-link.active:hover {
+    background-color: #cfb54f !important;
+    color: #2f3234 !important;
+    font-weight: bold !important;
+    border-radius: 8px !important;
+    transition: background 0.2s !important;
+}
+.navbar-nav .nav-link,
+.sidebar-header,
+.sidebar a {
+    color: #cfb54f !important;
+}
+
+/* Cards e caixas */
+.card,
+.box,
+.modal-content,
+.info-box,
+.callout {
+    background: #ffffff !important;
+    border-radius: 15px !important;
+    color: #2f3234 !important;
+    border: none !important;
+    box-shadow: 0 2px 16px #2f32340d !important;
+}
+
+/* Botões */
+.btn,
+.btn-primary {
+    background: #2f3234 !important; 
+    border: none !important;
+    color: #cfb54f !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+}
+.btn:hover,
+.btn-primary:hover {
+    background: #34912a !important;
+    color: #fff !important;
+}
+.btn-success,
+.btn-success:focus {
+    background: #34912a !important;
+    color: #fff !important;
+    border: none !important;
+}
+.btn-success:hover {
+    background: #27701d !important;
+    color: #cfb54f !important;
+}
+
+/* Tabelas */
+.table,
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background: #ffffff !important;
+    border-radius: 8px !important;
+}
+.table thead th {
+    background: #2f3234 !important;
+    color: #cfb54f !important;
+    border-bottom: 2px solid #232627 !important;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background: #f7f5ea !important;
+}
+
+/* Formulários */
+input,
+textarea,
+select,
+.form-control {
+    border-radius: 6px !important;
+    border: 1px solid #cfb54f !important;
+    padding: 0.6em 0.9em !important;
+    background: #fff !important;
+    color: #2f3234 !important;
+}
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+    border-color: #cfb54f !important;
+    box-shadow: 0 0 0 2px #d8c378 !important;
+    outline: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+    background: #cfb54f !important;
+    border-radius: 4px !important;
+}
+::-webkit-scrollbar {
+    background: #f9fbf7 !important;
+    width: 8px !important;
+}
+
+/* Links */
+a {
+    color: #34912a !important;
+}
+a:hover {
+    color: #cfb54f !important;
+    text-decoration: underline !important;
+}
+
+/* Badges, Alertas e Destaques */
+.badge-warning,
+.badge-yellow {
+    background: #cfb54f !important;
+    color: #2f3234 !important;
+}
+.badge-success,
+.badge-green {
+    background: #34912a !important;
+    color: #fff !important;
+}
+.alert-success {
+    background: #eafdee !important;
+    color: #34912a !important;
+    border-color: #34912a !important;
+}
+.alert-danger {
+    background: #ffecec !important;
+    color: #cf4f4f !important;
+    border-color: #cf4f4f !important;
+}
+.alert-warning {
+    background: #fffbe9 !important;
+    color: #cfb54f !important;
+    border-color: #cfb54f !important;
+}
+
+a.nav-link.btn.btn-default.btn-flat.d-inline-block {
+    color: #2f3234 !important; /* Deixa o texto escuro */
+}
+a.nav-link.btn.btn-default.btn-flat.d-inline-block i {
+    color: #5dade2 !important; /* Mantém o ícone azul claro */
+}

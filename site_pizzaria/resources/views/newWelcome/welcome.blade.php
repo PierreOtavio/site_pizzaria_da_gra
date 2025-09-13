@@ -121,7 +121,7 @@
 
             <div class="mt-4 mb-2 d-flex flex-column align-items-center gap-3">
                 <a href="{{ route('login') }}" class="pizza-btn shadow-sm" style="width: 200px;">Entrar</a>
-                <a href="{{ route('register') }}" class="pizza-btn register-btn shadow-sm" style="width: 200px;">Cadastrar</a>
+                <a href="{{ route('register') }}" class="pizza-btn register-btn shadow-sm" style="width: 200px;">Cadastro</a>
         </div>
 
         </div>

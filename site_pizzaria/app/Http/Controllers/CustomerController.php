@@ -2,85 +2,102 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Proteger rotas por autenticação e política
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Customer::class, 'customer');
+    }
+
+    /**
+     * Listagem dos clientes (paginado e ordenado)
      */
     public function index()
     {
-        
+        $customers = Customer::orderBy('name')->paginate(15);
+        return view('admin.customers.index', compact('customers'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Mostra formulário de criação
      */
     public function create()
     {
-        return view();
+        return view('admin.customers.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Registra novo cliente no banco
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'    => 'required|string|max:100',
+            'email'   => 'required|email|max:100|unique:customers,email',
+            'phone'   => 'nullable|string|max:45',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        Customer::create($validated);
+        return redirect()->route('admin.customers.index')
+            ->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * Visualiza os detalhes de um cliente
      */
     public function show(Customer $customer)
     {
-        //
+        return view('admin.customers.show', compact('customer'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * Formulário de edição de cliente
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('admin.customers.edit', compact('customer'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * Atualização dos dados de um cliente
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // dd($customer, $customer->id, $request->all());
+        $validated = $request->validate([
+            'name'    => 'required|string|max:100',
+            'email' => [
+                'required',
+                'email',
+                'max:100',
+                Rule::unique('customers', 'email')->ignore($customer->customer_id, "customer_id"),
+            ],
+            'phone'   => 'nullable|string|max:45',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        $customer->update($validated);
+        return redirect()->route('admin.customers.show', $customer)
+            ->with('success', 'Cliente atualizado com sucesso!');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * Remove um cliente do banco
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return redirect()->route('admin.customers.index')
+            ->with('success', 'Cliente removido com sucesso!');
     }
 }
